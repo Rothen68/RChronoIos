@@ -92,6 +92,15 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="IIj-hm-Txq">
+                                <rect key="frame" x="265" y="147" width="94" height="29"/>
+                                <variation key="heightClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="265" y="147" width="94" height="29"/>
+                                </variation>
+                                <connections>
+                                    <action selector="stepValueChanged:" destination="Ah7-4n-0Wa" eventType="valueChanged" id="6jy-Qa-S6p"/>
+                                </connections>
+                            </stepper>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="or3-bv-CZy">
                                 <rect key="frame" x="44" y="147" width="146" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -133,57 +142,6 @@
                                     <rect key="frame" x="294" y="219" width="65" height="21"/>
                                 </variation>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="SS1-91-wUs">
-                                <rect key="frame" x="16" y="325" width="343" height="334"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="9p5-Gh-y8n">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9p5-Gh-y8n" id="3Qm-ic-Ww1">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercice " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O87-2S-sPh">
-                                                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular" fixedFrame="YES">
-                                                        <rect key="frame" x="8" y="12" width="111" height="21"/>
-                                                    </variation>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1:00 s" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fmt-Gc-eC3">
-                                                    <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                    <variation key="heightClass=regular" fixedFrame="YES">
-                                                        <rect key="frame" x="283" y="12" width="52" height="21"/>
-                                                    </variation>
-                                                </label>
-                                            </subviews>
-                                            <variation key="default">
-                                                <mask key="subviews">
-                                                    <exclude reference="O87-2S-sPh"/>
-                                                    <exclude reference="fmt-Gc-eC3"/>
-                                                </mask>
-                                            </variation>
-                                            <variation key="heightClass=regular">
-                                                <mask key="subviews">
-                                                    <include reference="O87-2S-sPh"/>
-                                                    <include reference="fmt-Gc-eC3"/>
-                                                </mask>
-                                            </variation>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="T1b-Ju-v04" kind="show" identifier="showExercice" id="RoZ-oW-JWV"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <variation key="heightClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="292" width="343" height="367"/>
-                                </variation>
-                            </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Exercices :" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zXB-MJ-hAF">
                                 <rect key="frame" x="16" y="295" width="110" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -211,15 +169,42 @@
                                     <rect key="frame" x="237" y="214" width="51" height="31"/>
                                 </variation>
                             </switch>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="IIj-hm-Txq">
-                                <rect key="frame" x="265" y="147" width="94" height="29"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="SS1-91-wUs">
+                                <rect key="frame" x="16" y="325" width="343" height="334"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="itemExercice" textLabel="rcA-iQ-oMi" detailTextLabel="okf-qC-a1S" style="IBUITableViewCellStyleValue1" id="fuX-Rc-Aub">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fuX-Rc-Aub" id="eIL-Jm-0iG">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rcA-iQ-oMi">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular">
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    </variation>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="okf-qC-a1S">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="heightClass=regular">
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    </variation>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                                 <variation key="heightClass=regular" fixedFrame="YES">
-                                    <rect key="frame" x="265" y="147" width="94" height="29"/>
+                                    <rect key="frame" x="16" y="292" width="343" height="367"/>
                                 </variation>
-                                <connections>
-                                    <action selector="stepValueChanged:" destination="Ah7-4n-0Wa" eventType="valueChanged" id="6jy-Qa-S6p"/>
-                                </connections>
-                            </stepper>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -490,7 +475,4 @@
             <point key="canvasLocation" x="1784.5" y="88.125"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="23x-sl-Gwb"/>
-    </inferredMetricsTieBreakers>
 </document>

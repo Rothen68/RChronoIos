@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EditionSequenceView : UIViewController
+@interface EditionSequenceView : UIViewController <UITableViewDataSource>
 
 //déclaration des composants de l'interface
 @property (weak, nonatomic) IBOutlet UITextField *txtNomSeq;
@@ -16,5 +16,10 @@
 @property (weak, nonatomic) IBOutlet UISwitch *swSynthDureeSeq;
 @property (weak, nonatomic) IBOutlet UISwitch *swSynthNomSeq;
 @property (weak, nonatomic) IBOutlet UITableView *lstExercices;
+
+
+
+
+@property NSMutableArray *mTabExercice;
 
 @end

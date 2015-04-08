@@ -18,6 +18,8 @@
 		EC8FB7FB1AD50F0500C029E2 /* RChronoIOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8FB7FA1AD50F0500C029E2 /* RChronoIOSTests.m */; };
 		EC9D20901AD53095000D0ECB /* EditionExerciceView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9D208F1AD53095000D0ECB /* EditionExerciceView.m */; };
 		EC9D20931AD530DF000D0ECB /* EditionSequenceView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9D20921AD530DF000D0ECB /* EditionSequenceView.m */; };
+		EC9D20961AD550E4000D0ECB /* Sequence.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9D20951AD550E4000D0ECB /* Sequence.m */; };
+		EC9D20991AD55226000D0ECB /* Exercice.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9D20981AD55226000D0ECB /* Exercice.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,10 @@
 		EC9D208F1AD53095000D0ECB /* EditionExerciceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditionExerciceView.m; sourceTree = "<group>"; };
 		EC9D20911AD530DF000D0ECB /* EditionSequenceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditionSequenceView.h; sourceTree = "<group>"; };
 		EC9D20921AD530DF000D0ECB /* EditionSequenceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditionSequenceView.m; sourceTree = "<group>"; };
+		EC9D20941AD550E4000D0ECB /* Sequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sequence.h; sourceTree = "<group>"; };
+		EC9D20951AD550E4000D0ECB /* Sequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sequence.m; sourceTree = "<group>"; };
+		EC9D20971AD55226000D0ECB /* Exercice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exercice.h; sourceTree = "<group>"; };
+		EC9D20981AD55226000D0ECB /* Exercice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exercice.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +113,10 @@
 				EC9D208F1AD53095000D0ECB /* EditionExerciceView.m */,
 				EC9D20911AD530DF000D0ECB /* EditionSequenceView.h */,
 				EC9D20921AD530DF000D0ECB /* EditionSequenceView.m */,
+				EC9D20941AD550E4000D0ECB /* Sequence.h */,
+				EC9D20951AD550E4000D0ECB /* Sequence.m */,
+				EC9D20971AD55226000D0ECB /* Exercice.h */,
+				EC9D20981AD55226000D0ECB /* Exercice.m */,
 			);
 			path = RChronoIOS;
 			sourceTree = "<group>";
@@ -237,12 +247,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC9D20991AD55226000D0ECB /* Exercice.m in Sources */,
 				EC8FB7E71AD50F0500C029E2 /* DetailViewController.m in Sources */,
 				EC8FB7E41AD50F0500C029E2 /* MasterViewController.m in Sources */,
 				EC9D20931AD530DF000D0ECB /* EditionSequenceView.m in Sources */,
 				EC8FB7DE1AD50F0500C029E2 /* AppDelegate.m in Sources */,
 				EC9D20901AD53095000D0ECB /* EditionExerciceView.m in Sources */,
 				EC8FB7DB1AD50F0500C029E2 /* main.m in Sources */,
+				EC9D20961AD550E4000D0ECB /* Sequence.m in Sources */,
 				EC8FB7E11AD50F0500C029E2 /* RChronoIOS.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
