@@ -14,6 +14,22 @@
 
 @implementation EditionSequenceView
 
+
+
+//implémentation des accesseurs des composants de l'interface
+@synthesize txtNomSeq;
+@synthesize txtNbreRepSeq;
+@synthesize swSynthNomSeq;
+@synthesize swSynthDureeSeq;
+@synthesize lstExercices;
+
+
+//Mise à jour de la valeur de la zone de texte Nombre de répétitions après click sur le stepper
+- (IBAction)stepValueChanged:(UIStepper *)sender {
+    double v = [sender value];
+    txtNbreRepSeq.text = [NSString stringWithFormat:@"%d", (int)v ];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
