@@ -16,6 +16,8 @@
 		EC8FB7EC1AD50F0500C029E2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC8FB7EB1AD50F0500C029E2 /* Images.xcassets */; };
 		EC8FB7EF1AD50F0500C029E2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC8FB7ED1AD50F0500C029E2 /* LaunchScreen.xib */; };
 		EC8FB7FB1AD50F0500C029E2 /* RChronoIOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8FB7FA1AD50F0500C029E2 /* RChronoIOSTests.m */; };
+		EC9D20901AD53095000D0ECB /* EditionExerciceView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9D208F1AD53095000D0ECB /* EditionExerciceView.m */; };
+		EC9D20931AD530DF000D0ECB /* EditionSequenceView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9D20921AD530DF000D0ECB /* EditionSequenceView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,10 @@
 		EC8FB7F41AD50F0500C029E2 /* RChronoIOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RChronoIOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC8FB7F91AD50F0500C029E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC8FB7FA1AD50F0500C029E2 /* RChronoIOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RChronoIOSTests.m; sourceTree = "<group>"; };
+		EC9D208E1AD53095000D0ECB /* EditionExerciceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditionExerciceView.h; sourceTree = "<group>"; };
+		EC9D208F1AD53095000D0ECB /* EditionExerciceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditionExerciceView.m; sourceTree = "<group>"; };
+		EC9D20911AD530DF000D0ECB /* EditionSequenceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditionSequenceView.h; sourceTree = "<group>"; };
+		EC9D20921AD530DF000D0ECB /* EditionSequenceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditionSequenceView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,10 @@
 				EC8FB7ED1AD50F0500C029E2 /* LaunchScreen.xib */,
 				EC8FB7DF1AD50F0500C029E2 /* RChronoIOS.xcdatamodeld */,
 				EC8FB7D81AD50F0500C029E2 /* Supporting Files */,
+				EC9D208E1AD53095000D0ECB /* EditionExerciceView.h */,
+				EC9D208F1AD53095000D0ECB /* EditionExerciceView.m */,
+				EC9D20911AD530DF000D0ECB /* EditionSequenceView.h */,
+				EC9D20921AD530DF000D0ECB /* EditionSequenceView.m */,
 			);
 			path = RChronoIOS;
 			sourceTree = "<group>";
@@ -229,7 +239,9 @@
 			files = (
 				EC8FB7E71AD50F0500C029E2 /* DetailViewController.m in Sources */,
 				EC8FB7E41AD50F0500C029E2 /* MasterViewController.m in Sources */,
+				EC9D20931AD530DF000D0ECB /* EditionSequenceView.m in Sources */,
 				EC8FB7DE1AD50F0500C029E2 /* AppDelegate.m in Sources */,
+				EC9D20901AD53095000D0ECB /* EditionExerciceView.m in Sources */,
 				EC8FB7DB1AD50F0500C029E2 /* main.m in Sources */,
 				EC8FB7E11AD50F0500C029E2 /* RChronoIOS.xcdatamodeld in Sources */,
 			);
@@ -422,6 +434,7 @@
 				EC8FB8001AD50F0500C029E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EC8FB8011AD50F0500C029E2 /* Build configuration list for PBXNativeTarget "RChronoIOSTests" */ = {
 			isa = XCConfigurationList;
@@ -430,6 +443,7 @@
 				EC8FB8031AD50F0500C029E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
