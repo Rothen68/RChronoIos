@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
+
 
 @interface EditionSequenceView : UIViewController <UITableViewDataSource>
+
 
 //déclaration des composants de l'interface
 @property (weak, nonatomic) IBOutlet UITextField *txtNomSeq;
@@ -17,7 +20,14 @@
 @property (weak, nonatomic) IBOutlet UISwitch *swSynthNomSeq;
 @property (weak, nonatomic) IBOutlet UITableView *lstExercices;
 
+- (IBAction)onBtnOkClick:(UIButton *)sender;
 
+//contient l'item sur lequel l'utilisateur à cliqué sur la masterView
+@property (strong, nonatomic) id detailSequence;
+
+//stocke le managedObjectContext depuis la classe MasterViewController pour l'acces aux données de coreData
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 
 
 @property NSMutableArray *mTabExercice;

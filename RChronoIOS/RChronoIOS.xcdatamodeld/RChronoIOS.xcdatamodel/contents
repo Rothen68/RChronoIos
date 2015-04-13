@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <entity name="Event">
-        <attribute name="timeStamp" optional="YES" attributeType="Date"/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14C1514" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Exercice" syncable="YES">
+        <attribute name="descriptionEx" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="dureeEx" attributeType="Integer 32" minValueString="1" defaultValueString="1" syncable="YES"/>
+        <attribute name="nomEx" attributeType="String" syncable="YES"/>
+        <attribute name="notifSonnerieEx" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="notifVibreurEx" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="positionDansSeqenceEx" attributeType="Integer 16" minValueString="0" defaultValueString="0" syncable="YES"/>
+        <attribute name="synthVocDureeEx" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="synthVocNomEx" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <relationship name="sequence" maxCount="1" deletionRule="Nullify" destinationEntity="Sequence" inverseName="exercices" inverseEntity="Sequence" syncable="YES"/>
+    </entity>
+    <entity name="Sequence" syncable="YES">
+        <attribute name="nombreRepetitionsSeq" attributeType="Integer 16" minValueString="1" defaultValueString="1" syncable="YES"/>
+        <attribute name="nomSeq" attributeType="String" syncable="YES"/>
+        <attribute name="synthVocDureeSeq" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="synthVocNomSeq" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <relationship name="exercices" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Exercice" inverseName="sequence" inverseEntity="Exercice" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Event" positionX="261" positionY="189" width="128" height="60"/>
+        <element name="Sequence" positionX="403" positionY="224" width="128" height="118"/>
+        <element name="Exercice" positionX="72" positionY="161" width="128" height="178"/>
     </elements>
 </model>
