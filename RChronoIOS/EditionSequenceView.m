@@ -244,9 +244,14 @@
     NSManagedObjectContext *context = [self.fetchedResultsControllerEx managedObjectContext];
     NSEntityDescription *entity = [[self.fetchedResultsControllerEx fetchRequest] entity];
     NSManagedObject *newExercice = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
-    [newExercice setValue:@"TOTO" forKey:@"nomEx"];
-    [newExercice setValue:@"C'est toto" forKey:@"descriptionEx"];
+    [newExercice setValue:@"Nouvel exercice" forKey:@"nomEx"];
+    [newExercice setValue:@"" forKey:@"descriptionEx"];
     [newExercice setValue:@10 forKey:@"dureeEx"];
+    
+    //récupération de la position de l'exercice dans la liste d'exercices de la séquence
+    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsControllerEx sections][0];
+    long nbreExercicesDansSequence = [sectionInfo numberOfObjects];
+    [newExercice setValue:[NSNumber numberWithLong:nbreExercicesDansSequence] forKey:@"positionDansSequenceEx"];
     
     //mise en place de la relation entre l'exercice créé et la séquence dans detailItem
     [newExercice setValue:self.detailItem forKey:@"sequence"];
@@ -325,7 +330,7 @@
     [fetchRequest setFetchBatchSize:20];
     
     // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"positionDansSeqenceEx" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"positionDansSequenceEx" ascending:YES];
     NSArray *sortDescriptors = @[sortDescriptor];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
