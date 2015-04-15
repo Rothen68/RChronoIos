@@ -16,6 +16,7 @@
 		EC8FB7EC1AD50F0500C029E2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC8FB7EB1AD50F0500C029E2 /* Images.xcassets */; };
 		EC8FB7EF1AD50F0500C029E2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC8FB7ED1AD50F0500C029E2 /* LaunchScreen.xib */; };
 		EC8FB7FB1AD50F0500C029E2 /* RChronoIOSTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8FB7FA1AD50F0500C029E2 /* RChronoIOSTests.m */; };
+		EC8FC4A71ADE95E700B6F3F5 /* Fonctions.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8FC4A61ADE95E700B6F3F5 /* Fonctions.m */; };
 		EC9D20901AD53095000D0ECB /* EditionExerciceView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9D208F1AD53095000D0ECB /* EditionExerciceView.m */; };
 		EC9D20931AD530DF000D0ECB /* EditionSequenceView.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9D20921AD530DF000D0ECB /* EditionSequenceView.m */; };
 		EC9D20961AD550E4000D0ECB /* Sequence.m in Sources */ = {isa = PBXBuildFile; fileRef = EC9D20951AD550E4000D0ECB /* Sequence.m */; };
@@ -49,6 +50,8 @@
 		EC8FB7F41AD50F0500C029E2 /* RChronoIOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RChronoIOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC8FB7F91AD50F0500C029E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EC8FB7FA1AD50F0500C029E2 /* RChronoIOSTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RChronoIOSTests.m; sourceTree = "<group>"; };
+		EC8FC4A51ADE95E700B6F3F5 /* Fonctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fonctions.h; sourceTree = "<group>"; };
+		EC8FC4A61ADE95E700B6F3F5 /* Fonctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fonctions.m; sourceTree = "<group>"; };
 		EC9D208E1AD53095000D0ECB /* EditionExerciceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditionExerciceView.h; sourceTree = "<group>"; };
 		EC9D208F1AD53095000D0ECB /* EditionExerciceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditionExerciceView.m; sourceTree = "<group>"; };
 		EC9D20911AD530DF000D0ECB /* EditionSequenceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditionSequenceView.h; sourceTree = "<group>"; };
@@ -117,6 +120,8 @@
 				EC9D20951AD550E4000D0ECB /* Sequence.m */,
 				EC9D20971AD55226000D0ECB /* Exercice.h */,
 				EC9D20981AD55226000D0ECB /* Exercice.m */,
+				EC8FC4A51ADE95E700B6F3F5 /* Fonctions.h */,
+				EC8FC4A61ADE95E700B6F3F5 /* Fonctions.m */,
 			);
 			path = RChronoIOS;
 			sourceTree = "<group>";
@@ -254,6 +259,7 @@
 				EC8FB7DE1AD50F0500C029E2 /* AppDelegate.m in Sources */,
 				EC9D20901AD53095000D0ECB /* EditionExerciceView.m in Sources */,
 				EC8FB7DB1AD50F0500C029E2 /* main.m in Sources */,
+				EC8FC4A71ADE95E700B6F3F5 /* Fonctions.m in Sources */,
 				EC9D20961AD550E4000D0ECB /* Sequence.m in Sources */,
 				EC8FB7E11AD50F0500C029E2 /* RChronoIOS.xcdatamodeld in Sources */,
 			);

@@ -31,5 +31,6 @@
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsControllerSeq;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsControllerEx;
 
++(NSString *) convertIntToHHMMSS:(int) valeur;
 
 @end
