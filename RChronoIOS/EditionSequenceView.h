@@ -32,6 +32,4 @@
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsControllerEx;
 
 
-@property NSMutableArray *mTabExercice;
-
 @end

@@ -98,7 +98,7 @@
 @synthesize swSynthDureeSeq;
 @synthesize lstExercices;
 
-@synthesize mTabExercice;
+
 
 
 //Mise à jour de la valeur de la zone de texte Nombre de répétitions après click sur le stepper
@@ -112,7 +112,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     //création du tableau provisoire d'exercices pour peupler la listview
-    self.mTabExercice = [[NSMutableArray alloc] init];
     [lstExercices setDataSource:self];
     [lstExercices setDelegate:self];
     
@@ -126,25 +125,6 @@
     [swSynthDureeSeq setOn:etatSynthVocDuree];
 }
 
-/*
-//charge du contenu test dans le tableau des exercices
-- (void) loadInitialData{
-
-    
-    
-    Exercice *ex1 = [[Exercice alloc] init];
-    ex1.mNom = @"Exercice 1";
-    ex1.mDescription = @"Desc Exercice 1";
-    ex1.mDuree = 60;
-    [self.mTabExercice addObject:ex1];
-    Exercice *ex2 = [[Exercice alloc] init];
-    ex2.mNom = @"Exercice 2";
-    ex2.mDescription = @"Desc Exercice 2";
-    ex2.mDuree = 120;
-    [self.mTabExercice addObject:ex2];
-    
-    
-}*/
 
 
 
@@ -153,40 +133,18 @@
     // Dispose of any resources that can be recreated.
 }
 
-// Renvois le nombre de section, cad 1 vu qu'il n'y a qu'une section
-/*- (NSInteger) numberOfSectionsIntTableView:(UITableView * ) tableView{
-    return 1;
-}*/
-
-//Renvois le nombre de lignes dans la section courante
-/*-(NSInteger) tableView:(UITableView *) tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [self.mTabExercice count];
-}*/
 
 
-//Envois une cellule du listView initialisé à partir de la position passée dans indexPath
-//(NSIndexPath *) indexPath : position de la cellule à initialiser dans la listView
-//(UITableViewCell *) : cellule initialisée
-/*-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"itemExercice" forIndexPath:indexPath];
-    
-    if(cell == nil)
-    {
-        cell=[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"itemExercice"];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+#pragma mark - Segues
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"showExercice"]) {
+        NSIndexPath *indexPath = [self.lstExercices indexPathForSelectedRow];
+        NSManagedObject *object = [[self fetchedResultsControllerEx] objectAtIndexPath:indexPath];
+        [[segue destinationViewController] setDetailItem:object];
+        [[segue destinationViewController] setManagedObjectContext:self.managedObjectContext];
     }
-    Exercice * ex = [self.mTabExercice objectAtIndex:indexPath.row];
-    cell.textLabel.text = ex.mNom;
-    cell.detailTextLabel.text = [self convertIntToHHMMSS:ex.mDuree];
-    return cell;
-    
-}*/
-
-
-
+}
 
 
 
@@ -244,7 +202,7 @@
 - (IBAction)onBtnOkClick:(UIButton *)sender {
     
 
-    //met à jour les données dans self.detailSequence
+    //met à jour les données dans self.detailItem
 
     [self.detailItem setValue:txtNomSeq.text forKey:@"nomSeq"];
     

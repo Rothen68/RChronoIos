@@ -248,7 +248,7 @@
             </objects>
             <point key="canvasLocation" x="1221.5" y="61.875"/>
         </scene>
-        <!--Edition Exercice View-->
+        <!--Exercice-->
         <scene sceneID="jkY-DC-Neg">
             <objects>
                 <viewController id="T1b-Ju-v04" customClass="EditionExerciceView" sceneMemberID="viewController">
@@ -279,19 +279,6 @@
                             </textField>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LoX-eW-DtW">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <items>
-                                    <navigationItem title="Exercice" id="w5W-kf-0nM">
-                                        <barButtonItem key="rightBarButtonItem" style="plain" id="NV4-Ny-arG">
-                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="q0G-K1-xZw">
-                                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                <state key="normal" title="OK">
-                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                            </button>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
                                 <variation key="heightClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 </variation>
@@ -425,6 +412,15 @@
                                     <rect key="frame" x="16" y="502" width="91" height="21"/>
                                 </variation>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercice" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ck-SU-jHP">
+                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="211" y="20" width="42" height="21"/>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -448,6 +444,7 @@
                                 <exclude reference="S7E-bH-X5w"/>
                                 <exclude reference="6TS-M1-DZ0"/>
                                 <exclude reference="jKA-c4-fO1"/>
+                                <exclude reference="2Ck-SU-jHP"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
@@ -471,10 +468,35 @@
                                 <include reference="S7E-bH-X5w"/>
                                 <include reference="6TS-M1-DZ0"/>
                                 <include reference="jKA-c4-fO1"/>
+                                <include reference="2Ck-SU-jHP"/>
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Exercice" id="w5W-kf-0nM">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="s8J-Bu-MLY">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Rdn-td-xIf">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Ok">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="onBtnOkClick:" destination="T1b-Ju-v04" eventType="touchDown" id="qQQ-xJ-Uxj"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="swNotifSonnerieEx" destination="y2G-tK-UiO" id="7Bw-ex-tYA"/>
+                        <outlet property="swNotifVibreurEx" destination="QwJ-je-aec" id="rFi-Zl-QDg"/>
+                        <outlet property="swSynthVocDureeEx" destination="eZ7-l7-o00" id="pMB-ii-4zG"/>
+                        <outlet property="swSynthVocNomEx" destination="aJR-Px-9eS" id="Rl2-ax-e2T"/>
+                        <outlet property="txtDescEx" destination="9EO-yx-MFu" id="y2s-ut-gAE"/>
+                        <outlet property="txtDureeEx" destination="zj7-XQ-Hue" id="dhy-Xz-wH4"/>
+                        <outlet property="txtNomEx" destination="BbE-W9-MQu" id="qk7-cd-2qI"/>
+                        <outlet property="txtSonnerieEx" destination="6TS-M1-DZ0" id="ECh-nf-OnD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dEo-re-X5A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
