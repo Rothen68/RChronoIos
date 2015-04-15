@@ -14,7 +14,7 @@
 #import <CoreData/CoreData.h>
 
 
-@interface EditionSequenceView ()
+@interface EditionSequenceView () <NSFetchedResultsControllerDelegate>
 
 
 @end
@@ -261,7 +261,7 @@
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
-    
+    [self.lstExercices endUpdates];
     
 }
 
@@ -318,7 +318,7 @@
     // Edit the entity name as appropriate.
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Exercice" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
-    NSPredicate * seqPredicate = [NSPredicate predicateWithFormat:@"ANY sequence ==%@", self.detailItem];
+    NSPredicate * seqPredicate = [NSPredicate predicateWithFormat:@"sequence ==%@", self.detailItem];
     [fetchRequest setPredicate:seqPredicate];
     
     // Set the batch size to a suitable number.
@@ -345,6 +345,47 @@
     }
     
     return _fetchedResultsControllerEx;
+}
+
+//Gestion de la mise à jour des fetchedResultController
+
+//prépare la listView à la mise à jour
+- (void) controllerWillChangeContent:(NSFetchedResultsController *)controller
+{
+    [self.lstExercices beginUpdates];
+}
+
+//signale à la listView la fin de la mise à jour
+-(void) controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    [self.lstExercices endUpdates];
+}
+
+//Met à jour l'affichage de la listView en fonction de la modification effectuée par le fetchedResultController
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
+       atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
+      newIndexPath:(NSIndexPath *)newIndexPath
+{
+    UITableView *tableView = self.lstExercices;
+    
+    switch(type) {
+        case NSFetchedResultsChangeInsert:
+            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeUpdate:
+            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            break;
+            
+        case NSFetchedResultsChangeMove:
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
 }
 
 
