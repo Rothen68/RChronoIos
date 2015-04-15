@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
 
 @interface EditionExerciceView : UIViewController
+
+
+//stocke le managedObjectContext depuis la classe MasterViewController pour l'acces aux données de coreData
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsControllerEx;
+
 
 @end

@@ -160,7 +160,7 @@
                                     <rect key="frame" x="332" y="257" width="27" height="32"/>
                                 </variation>
                                 <connections>
-                                    <segue destination="T1b-Ju-v04" kind="show" identifier="addExercice" id="23x-sl-Gwb"/>
+                                    <action selector="onBtnAddClick:" destination="Ah7-4n-0Wa" eventType="touchDown" id="dYt-qd-lmt"/>
                                 </connections>
                             </button>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kaQ-SR-c11">
@@ -481,7 +481,4 @@
             <point key="canvasLocation" x="1784.5" y="88.125"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="VKK-Bh-SzU"/>
-    </inferredMetricsTieBreakers>
 </document>

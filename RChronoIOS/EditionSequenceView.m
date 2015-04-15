@@ -113,21 +113,20 @@
     [super viewDidLoad];
     //création du tableau provisoire d'exercices pour peupler la listview
     self.mTabExercice = [[NSMutableArray alloc] init];
-    [self loadInitialData];
     [lstExercices setDataSource:self];
     [lstExercices setDelegate:self];
     
     //initialisation des zones de texte et des switchs depuis les valeurs contenues dans 
-    txtNomSeq.text=[[self.detailSequence valueForKey:@"nomSeq"] description];
-    txtNbreRepSeq.text=[[self.detailSequence valueForKey:@"nombreRepetitionsSeq"] description];
+    txtNomSeq.text=[[self.detailItem valueForKey:@"nomSeq"] description];
+    txtNbreRepSeq.text=[[self.detailItem valueForKey:@"nombreRepetitionsSeq"] description];
 
-    BOOL etatSynthVocNom =[[[self.detailSequence valueForKey:@"synthVocNomSeq"]description] boolValue];
+    BOOL etatSynthVocNom =[[[self.detailItem valueForKey:@"synthVocNomSeq"]description] boolValue];
     [swSynthNomSeq setOn:etatSynthVocNom];
-    BOOL etatSynthVocDuree =[[[self.detailSequence valueForKey:@"synthVocDureeSeq"]description] boolValue];
+    BOOL etatSynthVocDuree =[[[self.detailItem valueForKey:@"synthVocDureeSeq"]description] boolValue];
     [swSynthDureeSeq setOn:etatSynthVocDuree];
 }
 
-
+/*
 //charge du contenu test dans le tableau des exercices
 - (void) loadInitialData{
 
@@ -145,7 +144,7 @@
     [self.mTabExercice addObject:ex2];
     
     
-}
+}*/
 
 
 
@@ -155,21 +154,21 @@
 }
 
 // Renvois le nombre de section, cad 1 vu qu'il n'y a qu'une section
-- (NSInteger) numberOfSectionsIntTableView:(UITableView * ) tableView{
+/*- (NSInteger) numberOfSectionsIntTableView:(UITableView * ) tableView{
     return 1;
-}
+}*/
 
 //Renvois le nombre de lignes dans la section courante
--(NSInteger) tableView:(UITableView *) tableView numberOfRowsInSection:(NSInteger)section
+/*-(NSInteger) tableView:(UITableView *) tableView numberOfRowsInSection:(NSInteger)section
 {
     return [self.mTabExercice count];
-}
+}*/
 
 
 //Envois une cellule du listView initialisé à partir de la position passée dans indexPath
 //(NSIndexPath *) indexPath : position de la cellule à initialiser dans la listView
 //(UITableViewCell *) : cellule initialisée
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+/*-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"itemExercice" forIndexPath:indexPath];
@@ -184,7 +183,7 @@
     cell.detailTextLabel.text = [self convertIntToHHMMSS:ex.mDuree];
     return cell;
     
-}
+}*/
 
 
 
@@ -199,6 +198,46 @@
     double d = 2;
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsControllerEx sections][section];
+    return [sectionInfo numberOfObjects];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"itemExercice" forIndexPath:indexPath];
+    [self configureCell:cell atIndexPath:indexPath];
+    return cell;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return NO if you do not want the specified item to be editable.
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        NSManagedObjectContext *context = [self.fetchedResultsControllerEx managedObjectContext];
+        [context deleteObject:[self.fetchedResultsControllerEx objectAtIndexPath:indexPath]];
+        
+        NSError *error = nil;
+        if (![context save:&error]) {
+            // Replace this implementation with code to handle the error appropriately.
+            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+    }
+}
+
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    NSManagedObject *object = [self.fetchedResultsControllerEx objectAtIndexPath:indexPath];
+    cell.textLabel.text = [[object valueForKey:@"nomEx"] description];
+}
+
 
 
 //Met à jour les données dans CoreData
@@ -207,27 +246,27 @@
 
     //met à jour les données dans self.detailSequence
 
-    [self.detailSequence setValue:txtNomSeq.text forKey:@"nomSeq"];
+    [self.detailItem setValue:txtNomSeq.text forKey:@"nomSeq"];
     
     long nbreRepetitions =[txtNbreRepSeq.text integerValue] ;
-    [self.detailSequence setValue:[NSNumber numberWithLong:nbreRepetitions] forKey:@"nombreRepetitionsSeq"];
+    [self.detailItem setValue:[NSNumber numberWithLong:nbreRepetitions] forKey:@"nombreRepetitionsSeq"];
     
     if(swSynthNomSeq.on)
     {
-        [self.detailSequence setValue:@true forKey:@"synthVocNomSeq"];
+        [self.detailItem setValue:@true forKey:@"synthVocNomSeq"];
     }
     else
     {
-        [self.detailSequence setValue:@false forKey:@"synthVocNomSeq"];
+        [self.detailItem setValue:@false forKey:@"synthVocNomSeq"];
     }
     
     if(swSynthDureeSeq.on)
     {
-        [self.detailSequence setValue:@true forKey:@"synthVocDureeSeq"];
+        [self.detailItem setValue:@true forKey:@"synthVocDureeSeq"];
     }
     else
     {
-        [self.detailSequence setValue:@false forKey:@"synthVocDureeSeq"];
+        [self.detailItem setValue:@false forKey:@"synthVocDureeSeq"];
     }
     
 
@@ -243,14 +282,39 @@
     }
 }
 
+- (IBAction)onBtnAddClick:(id)sender {
+    NSManagedObjectContext *context = [self.fetchedResultsControllerEx managedObjectContext];
+    NSEntityDescription *entity = [[self.fetchedResultsControllerEx fetchRequest] entity];
+    NSManagedObject *newExercice = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
+    [newExercice setValue:@"TOTO" forKey:@"nomEx"];
+    [newExercice setValue:@"C'est toto" forKey:@"descriptionEx"];
+    [newExercice setValue:@10 forKey:@"dureeEx"];
+    
+    //mise en place de la relation entre l'exercice créé et la séquence dans detailItem
+    [newExercice setValue:self.detailItem forKey:@"sequence"];
+    NSMutableSet *exercices = [self.detailItem mutableSetValueForKey:@"exercices"];
+    [exercices addObject:newExercice];
+    
+    //sauvegarde les données mises à jour
+    NSError *error = nil;
+    if (![self.managedObjectContext save:&error]) {
+        // Replace this implementation with code to handle the error appropriately.
+        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    
+    
+}
+
 
 
 #pragma mark - Fetched results controller
 
-- (NSFetchedResultsController *)fetchedResultsController
+- (NSFetchedResultsController *)fetchedResultsControllerSeq
 {
-    if (_fetchedResultsController != nil) {
-        return _fetchedResultsController;
+    if (_fetchedResultsControllerSeq != nil) {
+        return _fetchedResultsControllerSeq;
     }
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -271,21 +335,59 @@
     // nil for section name key path means "no sections".
     NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Master"];
     aFetchedResultsController.delegate = self;
-    self.fetchedResultsController = aFetchedResultsController;
+    self.fetchedResultsControllerSeq = aFetchedResultsController;
     
     NSError *error = nil;
-    if (![self.fetchedResultsController performFetch:&error]) {
+    if (![self.fetchedResultsControllerSeq performFetch:&error]) {
         // Replace this implementation with code to handle the error appropriately.
         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
     
-    return _fetchedResultsController;
+    return _fetchedResultsControllerSeq;
 }
 
 
-
+- (NSFetchedResultsController *)fetchedResultsControllerEx
+{
+    [NSFetchedResultsController deleteCacheWithName:@"Master"];
+    if (_fetchedResultsControllerEx != nil) {
+        return _fetchedResultsControllerEx;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    // Edit the entity name as appropriate.
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Exercice" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSPredicate * seqPredicate = [NSPredicate predicateWithFormat:@"ANY sequence ==%@", self.detailItem];
+    [fetchRequest setPredicate:seqPredicate];
+    
+    // Set the batch size to a suitable number.
+    [fetchRequest setFetchBatchSize:20];
+    
+    // Edit the sort key as appropriate.
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"positionDansSeqenceEx" ascending:NO];
+    NSArray *sortDescriptors = @[sortDescriptor];
+    
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    // Edit the section name key path and cache name if appropriate.
+    // nil for section name key path means "no sections".
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Master"];
+    aFetchedResultsController.delegate = self;
+    self.fetchedResultsControllerEx = aFetchedResultsController;
+    
+    NSError *error = nil;
+    if (![self.fetchedResultsControllerEx performFetch:&error]) {
+        // Replace this implementation with code to handle the error appropriately.
+        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    
+    return _fetchedResultsControllerEx;
+}
 
 
 

@@ -60,7 +60,7 @@
     if ([[segue identifier] isEqualToString:@"showSequenceDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-        [[segue destinationViewController] setDetailSequence:object];
+        [[segue destinationViewController] setDetailItem:object];
         [[segue destinationViewController] setManagedObjectContext:self.managedObjectContext];
 
         
