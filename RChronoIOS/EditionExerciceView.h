@@ -28,6 +28,7 @@
 @property (weak, nonatomic) IBOutlet UISwitch *swNotifSonnerieEx;
 @property (weak, nonatomic) IBOutlet UITextField *txtSonnerieEx;
 
+- (IBAction)onSwVibreurChange:(UISwitch *)sender;
 
 - (IBAction)onBtnOkClick:(id)sender;
 

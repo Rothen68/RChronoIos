@@ -370,6 +370,9 @@
                                 <variation key="heightClass=regular" fixedFrame="YES">
                                     <rect key="frame" x="16" y="451" width="51" height="31"/>
                                 </variation>
+                                <connections>
+                                    <action selector="onSwVibreurChange:" destination="T1b-Ju-v04" eventType="valueChanged" id="JRe-9u-8os"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vibreur" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BoX-Ux-h4w">
                                 <rect key="frame" x="0.0" y="-21" width="42" height="21"/>

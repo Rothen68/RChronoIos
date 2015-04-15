@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+//Classe statique Fonctions contenant les fonctions utilitaires
+//de l'application
+
 @interface Fonctions : NSObject
 +(NSString *) convertIntToHHMMSS:(int) valeur;
 @end

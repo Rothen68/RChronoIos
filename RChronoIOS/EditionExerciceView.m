@@ -8,6 +8,8 @@
 
 #import "EditionExerciceView.h"
 
+#import <AudioToolbox/AudioServices.h>
+
 @interface EditionExerciceView ()
 
 @end
@@ -97,6 +99,13 @@
     return _fetchedResultsControllerEx;
 }
 
+
+- (IBAction)onSwVibreurChange:(id)sender {
+    if(swNotifVibreurEx.on)
+    {
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+    }
+}
 //Met à jour les données dans self.detailItem
 - (IBAction)onBtnOkClick:(id)sender {
     [self.detailItem setValue:txtNomEx.text forKey:@"nomEx"];

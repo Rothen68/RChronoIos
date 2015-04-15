@@ -15,6 +15,7 @@
 #import <CoreData/CoreData.h>
 
 
+
 @interface EditionSequenceView () <NSFetchedResultsControllerDelegate>
 
 
@@ -201,6 +202,9 @@
     [self.lstExercices endUpdates];
     
 }
+
+
+
 
 
 

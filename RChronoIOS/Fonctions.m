@@ -9,6 +9,13 @@
 #import "Fonctions.h"
 
 @implementation Fonctions
+//Convertit un entier en une chaîne de caractère au format HH : MM : SS
+//(int) valeur : Valeur en entrée
+//(NSString *) : chaîne de caractère convertie
+//
+// retourne : 1:00:00 s pour 3600 en entrée
+// retourne : 1:00 s pour 60 en entrée
+// retourne : 10 s pour 10 en entrée
 
 +(NSString *) convertIntToHHMMSS:(int) valeur
 {
