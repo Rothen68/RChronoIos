@@ -15,13 +15,22 @@
 
 @implementation MasterViewController
 
+
 - (void)awakeFromNib {
     [super awakeFromNib];
 }
 
+
+// Nom : viewDidLoad
+//
+// Description :
+//  Fonction appelée après le chargement de la View, permet
+//  l'initialisation des boutons de la barre d'action
+//
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+
+    // Affichage du bouton Edit
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
@@ -30,16 +39,20 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+   
 }
 
+// Nom : insertNewObject
+//
+// Description :
+//  Gère l'insertion d'une nouvelle séquence dans la list des séquences
+//
 - (void)insertNewObject:(id)sender {
     NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
     NSEntityDescription *entity = [[self.fetchedResultsController fetchRequest] entity];
     NSManagedObject *newManagedObject = [NSEntityDescription insertNewObjectForEntityForName:[entity name] inManagedObjectContext:context];
         
-    // If appropriate, configure the new managed object.
-    // Normally you should use accessor methods, but using KVC here avoids the need to add a custom class to the template.
+
     [newManagedObject setValue:@"Nouvelle séquence" forKey:@"nomSeq"];
     [newManagedObject setValue:@1 forKey:@"nombreRepetitionsSeq"];
         
@@ -56,6 +69,12 @@
 
 #pragma mark - Segues
 
+
+// Nom : prepareForSegue
+//
+// Description :
+//  Fonction appelée lors du changement d'écran
+//
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showSequenceDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
@@ -69,15 +88,34 @@
 
 #pragma mark - Table View
 
+
+// Nom : numberOfSectionsInTableView
+//
+// Description :
+//  Renvois le nombre de sections de la table View
+//
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return [[self.fetchedResultsController sections] count];
 }
 
+
+// Nom : numberOfRowsInSection
+//
+// Description :
+//  Renvois le nombre de lignes dans la section actuelle de la table View
+//
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
     return [sectionInfo numberOfObjects];
 }
 
+
+// Nom : cellForRowAtIndexPath
+//
+// Description :
+//  Renvois l'élémnent de la table View dont l'index est spécifié en
+//  paramètre
+//
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     [self configureCell:cell atIndexPath:indexPath];
@@ -104,6 +142,12 @@
     }
 }
 
+
+// Nom : configureCell
+//
+// Description :
+//  Initialise l'élément de la table View passé en paramètre
+//
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = [[object valueForKey:@"nomSeq"] description];
@@ -111,6 +155,12 @@
 
 #pragma mark - Fetched results controller
 
+
+// Nom : fetchedResultsController
+//
+// Description :
+//  Récupère la liste des séquences de Core Data
+//
 - (NSFetchedResultsController *)fetchedResultsController
 {
     if (_fetchedResultsController != nil) {
@@ -146,13 +196,26 @@
 	}
     
     return _fetchedResultsController;
-}    
+}
 
+
+// Nom : controllerWillChangeContent
+//
+// Description :
+// Fonction appelée avant le commencement de la mise à jour du contenu de
+// la table View
+//
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
     [self.tableView beginUpdates];
 }
 
+
+// Nom : didChangeSection
+//
+// Description :
+//  Fonction appelée lors de la modification d'une catégorie dans la table view
+//
 - (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
            atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
 {
@@ -170,6 +233,12 @@
     }
 }
 
+
+// Nom : didChangeObject
+//
+// Description :
+//  Fonction appelée lors de la modification d'un élément de la table view
+//
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
        atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath
@@ -196,19 +265,16 @@
     }
 }
 
+
+// Nom : controllerDidChangeContent
+//
+// Description :
+//  Fonction appelée à la fin de la mise à jour de la table view
+//
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
     [self.tableView endUpdates];
 }
 
-/*
-// Implementing the above methods to update the table view in response to individual changes may have performance implications if a large number of changes are made simultaneously. If this proves to be an issue, you can instead just implement controllerDidChangeContent: which notifies the delegate that all section and object changes have been processed. 
- 
- - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
-{
-    // In the simplest, most efficient, case, reload the table view.
-    [self.tableView reloadData];
-}
- */
 
 @end

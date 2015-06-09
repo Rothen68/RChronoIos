@@ -16,6 +16,12 @@
 
 #pragma mark - Managing the detail item
 
+
+// Nom : setDetailItem
+//
+// Description :
+//  Définit l'item actuel
+//
 - (void)setDetailItem:(id)newDetailItem {
     if (_detailItem != newDetailItem) {
         _detailItem = newDetailItem;
@@ -25,8 +31,13 @@
     }
 }
 
+
+// Nom : configureView
+//
+// Description :
+//  Update the user interface for the detail item.
+//
 - (void)configureView {
-    // Update the user interface for the detail item.
     if (self.detailItem) {
         self.detailDescriptionLabel.text = [[self.detailItem valueForKey:@"timeStamp"] description];
     }

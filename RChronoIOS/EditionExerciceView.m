@@ -26,6 +26,12 @@
 @synthesize swNotifSonnerieEx;
 
 
+// Nom : viewDidLoad
+//
+// Description :
+//  Fonction appelée après le chargement de la View, permet
+//  l'initialisation des contrôles
+//
 - (void)viewDidLoad {
     [super viewDidLoad];
     txtNomEx.text = [[self.detailItem valueForKey:@"nomEx"]description];
@@ -59,6 +65,11 @@
 }
 */
 
+// Nom : fetchedResultsControllerEx
+//
+// Description :
+//  Récupère les données de CoreData en fonction de l'exercice à afficher
+//
 - (NSFetchedResultsController *)fetchedResultsControllerEx
 {
     [NSFetchedResultsController deleteCacheWithName:@"Master"];
@@ -100,13 +111,24 @@
 }
 
 
+// Nom : onSwVibreurChange
+//
+// Description :
+//  Fait vibrer le téléphone lors du changement de l'état de la notification Vibreur
+//
 - (IBAction)onSwVibreurChange:(id)sender {
     if(swNotifVibreurEx.on)
     {
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     }
 }
-//Met à jour les données dans self.detailItem
+
+
+// Nom : onBtnOkClick
+//
+// Description :
+//  Met à jour les données dans self.detailItem
+//
 - (IBAction)onBtnOkClick:(id)sender {
     [self.detailItem setValue:txtNomEx.text forKey:@"nomEx"];
     [self.detailItem setValue:txtDescEx.text forKey:@"descriptionEx"];

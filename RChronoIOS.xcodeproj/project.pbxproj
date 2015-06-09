@@ -11,7 +11,6 @@
 		EC8FB7DE1AD50F0500C029E2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8FB7DD1AD50F0500C029E2 /* AppDelegate.m */; };
 		EC8FB7E11AD50F0500C029E2 /* RChronoIOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EC8FB7DF1AD50F0500C029E2 /* RChronoIOS.xcdatamodeld */; };
 		EC8FB7E41AD50F0500C029E2 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8FB7E31AD50F0500C029E2 /* MasterViewController.m */; };
-		EC8FB7E71AD50F0500C029E2 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EC8FB7E61AD50F0500C029E2 /* DetailViewController.m */; };
 		EC8FB7EA1AD50F0500C029E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC8FB7E81AD50F0500C029E2 /* Main.storyboard */; };
 		EC8FB7EC1AD50F0500C029E2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC8FB7EB1AD50F0500C029E2 /* Images.xcassets */; };
 		EC8FB7EF1AD50F0500C029E2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EC8FB7ED1AD50F0500C029E2 /* LaunchScreen.xib */; };
@@ -42,8 +41,6 @@
 		EC8FB7E01AD50F0500C029E2 /* RChronoIOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RChronoIOS.xcdatamodel; sourceTree = "<group>"; };
 		EC8FB7E21AD50F0500C029E2 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		EC8FB7E31AD50F0500C029E2 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		EC8FB7E51AD50F0500C029E2 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		EC8FB7E61AD50F0500C029E2 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		EC8FB7E91AD50F0500C029E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EC8FB7EB1AD50F0500C029E2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		EC8FB7EE1AD50F0500C029E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -105,8 +102,6 @@
 				EC8FB7DD1AD50F0500C029E2 /* AppDelegate.m */,
 				EC8FB7E21AD50F0500C029E2 /* MasterViewController.h */,
 				EC8FB7E31AD50F0500C029E2 /* MasterViewController.m */,
-				EC8FB7E51AD50F0500C029E2 /* DetailViewController.h */,
-				EC8FB7E61AD50F0500C029E2 /* DetailViewController.m */,
 				EC8FB7E81AD50F0500C029E2 /* Main.storyboard */,
 				EC8FB7EB1AD50F0500C029E2 /* Images.xcassets */,
 				EC8FB7ED1AD50F0500C029E2 /* LaunchScreen.xib */,
@@ -253,7 +248,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EC9D20991AD55226000D0ECB /* Exercice.m in Sources */,
-				EC8FB7E71AD50F0500C029E2 /* DetailViewController.m in Sources */,
 				EC8FB7E41AD50F0500C029E2 /* MasterViewController.m in Sources */,
 				EC9D20931AD530DF000D0ECB /* EditionSequenceView.m in Sources */,
 				EC8FB7DE1AD50F0500C029E2 /* AppDelegate.m in Sources */,

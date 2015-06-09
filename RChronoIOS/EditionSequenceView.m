@@ -25,7 +25,7 @@
 
 
 
-//implémentation des accesseurs des composants de l'interface
+// Implémentation des accesseurs des composants de l'interface
 @synthesize txtNomSeq;
 @synthesize txtNbreRepSeq;
 @synthesize swSynthNomSeq;
@@ -33,16 +33,24 @@
 @synthesize lstExercices;
 
 
+// Nom : configureView
+//
+// Description :
+//  Mise à jour de la valeur de la zone de texte Nombre de répétitions après click sur le stepper
+//
 
-
-//Mise à jour de la valeur de la zone de texte Nombre de répétitions après click sur le stepper
-//UIStepper : contrôle stepper dont la valeur a changé
 - (IBAction)stepValueChanged:(UIStepper *)sender {
     double v = [sender value];
     txtNbreRepSeq.text = [NSString stringWithFormat:@"%d", (int)v ];
 }
 
-//fonction appelée quand la vue à été chargée, permet d'initialiser les composants de l'interface
+
+// Nom : viewDidLoad
+//
+// Description :
+//  Fonction appelée après le chargement de la View, permet
+//  l'initialisation des contrôles
+//
 - (void)viewDidLoad {
     [super viewDidLoad];
     //création du tableau provisoire d'exercices pour peupler la listview
@@ -70,7 +78,11 @@
 
 
 #pragma mark - Segues
-
+// Nom : prepareForSegue
+//
+// Description :
+//  Fonction appelée lors du changement d'écran
+//
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showExercice"]) {
         NSIndexPath *indexPath = [self.lstExercices indexPathForSelectedRow];
@@ -85,16 +97,33 @@
 
 #pragma mark - Table view delegate
 
-
+// Nom : numberOfSectionsInTableView
+//
+// Description :
+//  Renvois le nombre de sections de la table View
+//
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
 
+
+// Nom : numberOfRowsInSection
+//
+// Description :
+//  Renvois le nombre de lignes dans la section actuelle de la table View
+//
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsControllerEx sections][section];
     return [sectionInfo numberOfObjects];
 }
 
+
+// Nom : cellForRowAtIndexPath
+//
+// Description :
+//  Renvois l'élémnent de la table View dont l'index est spécifié en
+//  paramètre
+//
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"itemExercice" forIndexPath:indexPath];
     [self configureCell:cell atIndexPath:indexPath];
@@ -121,6 +150,12 @@
     }
 }
 
+
+// Nom : configureCell
+//
+// Description :
+//  Initialise l'élément de la table View passé en paramètre
+//
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     NSManagedObject *object = [self.fetchedResultsControllerEx objectAtIndexPath:indexPath];
     cell.textLabel.text = [[object valueForKey:@"nomEx"] description];
@@ -131,7 +166,11 @@
 
 
 
-//Met à jour les données dans CoreData
+// Nom : onBtnOkClick
+//
+// Description :
+//  Gère le click  sur le bouton Ok et met à jour Core Data
+//
 - (IBAction)onBtnOkClick:(UIButton *)sender {
     
 
@@ -173,6 +212,11 @@
     }
 }
 
+// Nom : onBtnAddClick
+//
+// Description :
+//  Gestion du bouton ajout d'un exercice, met à jour les contrôles
+//
 - (IBAction)onBtnAddClick:(id)sender {
     NSManagedObjectContext *context = [self.fetchedResultsControllerEx managedObjectContext];
     NSEntityDescription *entity = [[self.fetchedResultsControllerEx fetchRequest] entity];
@@ -210,6 +254,11 @@
 
 #pragma mark - Fetched results controller
 
+// Nom : fetchedResultsController
+//
+// Description :
+//  Récupère la liste des séquences de Core Data
+//
 - (NSFetchedResultsController *)fetchedResultsControllerSeq
 {
     if (_fetchedResultsControllerSeq != nil) {
@@ -247,7 +296,11 @@
     return _fetchedResultsControllerSeq;
 }
 
-
+// Nom : fetchedResultsController
+//
+// Description :
+//  Récupère la liste des exercices de la séquence affichée séquence de Core Data
+//
 - (NSFetchedResultsController *)fetchedResultsControllerEx
 {
     [NSFetchedResultsController deleteCacheWithName:@"Master"];
@@ -288,21 +341,33 @@
     return _fetchedResultsControllerEx;
 }
 
-//Gestion de la mise à jour des fetchedResultController
-
-//prépare la listView à la mise à jour
+// Nom : controllerWillChangeContent
+//
+// Description :
+// Fonction appelée avant le commencement de la mise à jour du contenu de
+// la table View
+//
 - (void) controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
     [self.lstExercices beginUpdates];
 }
 
-//signale à la listView la fin de la mise à jour
--(void) controllerDidChangeContent:(NSFetchedResultsController *)controller
+// Nom : controllerDidChangeContent
+//
+// Description :
+//  Fonction appelée à la fin de la mise à jour de la table view
+//-(void) controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
     [self.lstExercices endUpdates];
 }
 
-//Met à jour l'affichage de la listView en fonction de la modification effectuée par le fetchedResultController
+
+// Nom : didChangeObject
+//
+// Description :
+// Met à jour l'affichage de la listView en fonction de la modification effectuée par le fetchedResultController
+//
+//
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject
        atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath

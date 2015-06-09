@@ -11,7 +11,10 @@
 
 @interface MasterViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
+// Objet fesant l'interface avec Core Data
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+
+
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 
