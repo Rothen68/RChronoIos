@@ -356,7 +356,7 @@
 //
 // Description :
 //  Fonction appelée à la fin de la mise à jour de la table view
-//-(void) controllerDidChangeContent:(NSFetchedResultsController *)controller
+-(void) controllerDidChangeContent:(NSFetchedResultsController *)controller
 {
     [self.lstExercices endUpdates];
 }
